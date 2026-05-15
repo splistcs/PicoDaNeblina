@@ -32,9 +32,11 @@ public class Produto {
     }
 
     public void ativar(){
+        this.ativo = true;
     }
     
     public void inativar(){
+        this.ativo = false;
     }
 
     /* getters e setters */
