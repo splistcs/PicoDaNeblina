@@ -7,6 +7,7 @@ public class Produto {
     private String nome;
     private String descricao;
     private ArrayList<Sku> skuList;
+    private ArrayList<Categoria> categoriaList;
     private String Material;
     private String Marca;
     private boolean ativo;
@@ -29,6 +30,21 @@ public class Produto {
         this.skuList.forEach(sku -> {
             if (sku.getId() == id){
                 System.out.println("Sku encontrado: " + sku);
+            }
+        });
+    }
+
+    /* controle de categorias */
+    public void adicionarCategoria(Categoria categoria){
+        this.categoriaList.add(categoria);
+    }
+    public void removerCategoria(Categoria categoria){
+        this.categoriaList.remove(categoria);
+    }
+    public void getCategoria(int id){
+        this.categoriaList.forEach(categoria -> {
+            if (categoria.getId() == id){
+                System.out.println("Categoria encontrada: " + categoria);
             }
         });
     }

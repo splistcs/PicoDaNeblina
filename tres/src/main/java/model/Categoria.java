@@ -8,7 +8,6 @@ public class Categoria {
     private String slug;
     private boolean ativo;
     private ArrayList<Categoria> subcategoriaList;
-    private ArrayList<Produto> produtoList;
     private boolean isRaiz;
 
     public Categoria() {
@@ -36,23 +35,8 @@ public class Categoria {
         });
     }
 
-    /* controle de produtos */
-    public void adicionarProduto(Produto produto){
-        this.produtoList.add(produto);
-    }
-    public void removerProduto(Produto produto){
-        this.produtoList.remove(produto);
-    }
-    public void getProduto(int id){
-        this.produtoList.forEach(produto -> {
-            if (produto.getId() == id){
-                System.out.println("Produto encontrado: " + produto);
-            }
-        });
-    }
-
     /* getters e setters */
-    
+
     public void ativar(){
         this.ativo = true;
     }
@@ -99,14 +83,6 @@ public class Categoria {
 
     public void setSubcategoriaList(ArrayList<Categoria> subcategoriaList) {
         this.subcategoriaList = subcategoriaList;
-    }
-
-    public ArrayList<Produto> getProdutoList() {
-        return produtoList;
-    }
-
-    public void setProdutoList(ArrayList<Produto> produtoList) {
-        this.produtoList = produtoList;
     }
 
     public void setRaiz(boolean isRaiz) {
