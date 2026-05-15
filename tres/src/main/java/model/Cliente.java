@@ -13,12 +13,14 @@ public class Cliente {
     private ArrayList<Pedido> pedidoList;
     private ArrayList<Endereco> enderecoList;
 
-    public Cliente(int id, String nomeCompleto, String cpf, String telefone, Cadastro cadastro) {
+    public Cliente(int id, String nomeCompleto, String cpf, String telefone, Cadastro cadastro, Endereco endereco) {
         this.id = id;
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
         this.telefone = telefone;
         this.cadastro = cadastro;
+        this.enderecoList = new ArrayList<>();
+        this.enderecoList.add(endereco);
     }
 
 
