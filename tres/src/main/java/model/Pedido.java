@@ -16,7 +16,10 @@ public class Pedido {
     private EnderecoPedido enderecoEntrega;
 
     
-    public Pedido() {
+    public Pedido(EnderecoPedido enderecoEntrega, ItemPedido itemPedido){
+        this.enderecoEntrega = enderecoEntrega;
+        this.itemPedidoList = new ArrayList<>();
+        this.itemPedidoList.add(itemPedido);
     }
 
     public void adicionarItemPedido(ItemPedido itemPedido){

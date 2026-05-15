@@ -12,7 +12,9 @@ public class Produto {
     private boolean ativo;
     private String imagemPrincipalUrl;
 
-    public Produto() {
+    public Produto(Sku sku){
+        this.skuList = new ArrayList<>();
+        this.skuList.add(sku);
     }
 
     /*controle de sku*/
