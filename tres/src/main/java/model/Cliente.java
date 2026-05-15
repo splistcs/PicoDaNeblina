@@ -2,8 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-import model.Enums.Endereco;
-
 public class Cliente {
     private int id;
     private String nomeCompleto;

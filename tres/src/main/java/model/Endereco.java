@@ -1,4 +1,4 @@
-package model.Enums;
+package model;
 
 public class Endereco {
     private long id;
