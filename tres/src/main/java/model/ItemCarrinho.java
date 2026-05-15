@@ -8,6 +8,8 @@ public class ItemCarrinho {
     private Sku sku;
 
     public ItemCarrinho() {
+        this.quantidade = 0;
+        this.subtotal = BigDecimal.ZERO;
     }
 
     /*controle de quantidade */

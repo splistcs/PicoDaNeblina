@@ -9,6 +9,8 @@ public class ItemPedido {
     private BigDecimal precoUnitario;
 
     public ItemPedido() {
+        this.quantidade = 0;
+        this.precoUnitario = BigDecimal.ZERO;
     }
 
     public BigDecimal calcularPrecoTotal(){

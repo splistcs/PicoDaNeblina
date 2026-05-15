@@ -19,6 +19,7 @@ public class Cliente {
         this.cadastro = cadastro;
         this.enderecoList = new ArrayList<>();
         this.enderecoList.add(endereco);
+        this.pedidoList = new ArrayList<>();
     }
 
 

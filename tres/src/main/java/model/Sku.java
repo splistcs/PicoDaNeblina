@@ -22,6 +22,7 @@ public class Sku {
     }
 
     public Sku() {
+        this.estoque = 0;
     }
 
     /* funções de crud de especificação */
