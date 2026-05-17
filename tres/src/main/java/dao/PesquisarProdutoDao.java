@@ -10,7 +10,7 @@ import java.util.List;
 import dao.con.AcessoPSQL;
 import model.Produto;
 
-public class ProdutoDao {
+public class PesquisarProdutoDao {
 
   /*Uma ideia muito boa... ao invés de ter vários desse no código*/
   private Produto formatarProduto(ResultSet saida) throws SQLException {
@@ -26,7 +26,7 @@ public class ProdutoDao {
   }
 
   public boolean buscarPorNome(String nome, List<Produto> resultado) {
-    String sql = "SELECT * FROM produto "
+    String sql = "SELECT * FROM produto " +
                  "WHERE nome_prod LIKE ?";
 
     Connection con = null;
