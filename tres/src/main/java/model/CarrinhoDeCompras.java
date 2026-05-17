@@ -64,7 +64,7 @@ public class CarrinhoDeCompras {
 
     /* getters e setters */
     public int getIdSessao() {
-        return idSessao;
+        return this.idSessao;
     }
 
     public void setIdSessao(int idSessao) {
@@ -72,7 +72,7 @@ public class CarrinhoDeCompras {
     }
 
     public LocalDateTime getDataCriacao() {
-        return dataCriacao;
+        return this.dataCriacao;
     }
 
     public void setDataCriacao(LocalDateTime dataCriacao) {
@@ -80,7 +80,7 @@ public class CarrinhoDeCompras {
     }
 
     public BigDecimal getValorTotal() {
-        return valorTotal;
+        return this.valorTotal;
     }
 
     public void setValorTotal(BigDecimal valorTotal) {
@@ -88,7 +88,7 @@ public class CarrinhoDeCompras {
     }
 
     public String getCepDestino() {
-        return cepDestino;
+        return this.cepDestino;
     }
 
     public void setCepDestino(String cepDestino) {
@@ -96,7 +96,7 @@ public class CarrinhoDeCompras {
     }
 
     public ArrayList<ItemCarrinho> getItemCarrinhoList() {
-        return itemCarrinhoList;
+        return this.itemCarrinhoList;
     }
 
     public void setItemCarrinhoList(ArrayList<ItemCarrinho> itemCarrinhoList) {

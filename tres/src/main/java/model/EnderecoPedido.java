@@ -14,7 +14,7 @@ public class EnderecoPedido {
     /* getters e setters */
 
     public String getCep() {
-        return cep;
+        return this.cep;
     }
 
     public void setCep(String cep) {
@@ -22,7 +22,7 @@ public class EnderecoPedido {
     }
 
     public String getNumero() {
-        return numero;
+        return this.numero;
     }
 
     public void setNumero(String numero) {
@@ -30,7 +30,7 @@ public class EnderecoPedido {
     }
 
     public String getComplemento() {
-        return complemento;
+        return this.complemento;
     }
 
     public void setComplemento(String complemento) {
@@ -38,7 +38,7 @@ public class EnderecoPedido {
     }
 
     public String getRua() {
-        return rua;
+        return this.rua;
     }
 
     public void setRua(String rua) {
@@ -46,7 +46,7 @@ public class EnderecoPedido {
     }
 
     public String getBairro() {
-        return bairro;
+        return this.bairro;
     }
 
     public void setBairro(String bairro) {
@@ -54,7 +54,7 @@ public class EnderecoPedido {
     }
 
     public String getCidade() {
-        return cidade;
+        return this.cidade;
     }
 
     public void setCidade(String cidade) {

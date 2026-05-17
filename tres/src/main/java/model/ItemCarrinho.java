@@ -34,7 +34,7 @@ public class ItemCarrinho {
 
     /* getters e setters */
     public int getQuantidade() {
-        return quantidade;
+        return this.quantidade;
     }
 
     public void setQuantidade(int quantidade) {
@@ -42,7 +42,7 @@ public class ItemCarrinho {
     }
 
     public BigDecimal getSubtotal() {
-        return subtotal;
+        return this.subtotal;
     }
 
     public void setSubtotal(BigDecimal subtotal) {
@@ -50,7 +50,7 @@ public class ItemCarrinho {
     }
 
     public Sku getSku() {
-        return sku;
+        return this.sku;
     }
 
     public void setSku(Sku sku) {

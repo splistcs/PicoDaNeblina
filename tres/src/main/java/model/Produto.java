@@ -8,8 +8,8 @@ public class Produto {
     private String descricao;
     private ArrayList<Sku> skuList;
     private ArrayList<Categoria> categoriaList;
-    private String Material;
-    private String Marca;
+    private String material;
+    private String marca;
     private boolean ativo;
     private String imagemPrincipalUrl;
 
@@ -59,7 +59,7 @@ public class Produto {
 
     /* getters e setters */
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -67,7 +67,7 @@ public class Produto {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
@@ -75,7 +75,7 @@ public class Produto {
     }
 
     public String getDescricao() {
-        return descricao;
+        return this.descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -83,7 +83,7 @@ public class Produto {
     }
 
     public ArrayList<Sku> getSkuList() {
-        return skuList;
+        return this.skuList;
     }
 
     public void setSkuList(ArrayList<Sku> skuList) {
@@ -91,23 +91,23 @@ public class Produto {
     }
 
     public String getMaterial() {
-        return Material;
+        return this.material;
     }
 
     public void setMaterial(String material) {
-        Material = material;
+        this.material = material;
     }
 
     public String getMarca() {
-        return Marca;
+        return this.marca;
     }
 
     public void setMarca(String marca) {
-        Marca = marca;
+        this.marca = marca;
     }
 
     public boolean isAtivo() {
-        return ativo;
+        return this.ativo;
     }
 
     public void setAtivo(boolean ativo) {
@@ -115,7 +115,7 @@ public class Produto {
     }
 
     public String getImagemPrincipalUrl() {
-        return imagemPrincipalUrl;
+        return this.imagemPrincipalUrl;
     }
 
     public void setImagemPrincipalUrl(String imagemPrincipalUrl) {

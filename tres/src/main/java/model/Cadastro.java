@@ -18,7 +18,7 @@ public class Cadastro {
 
     /* getters e setters */
     public long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(long id) {
@@ -26,7 +26,7 @@ public class Cadastro {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -34,7 +34,7 @@ public class Cadastro {
     }
 
     public boolean isAtivo() {
-        return ativo;
+        return this.ativo;
     }
 
     public void setAtivo(boolean ativo) {
@@ -42,7 +42,7 @@ public class Cadastro {
     }
 
     public String getSenhaHash() {
-        return senhaHash;
+        return this.senhaHash;
     }
 
     public void setSenhaHash(String senhaHash) {
@@ -50,7 +50,7 @@ public class Cadastro {
     }
 
     public TipoCadastro getPapel() {
-        return papel;
+        return this.papel;
     }
 
     public void setPapel(TipoCadastro papel) {

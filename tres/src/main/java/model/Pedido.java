@@ -47,7 +47,7 @@ public class Pedido {
     /*getters e setters */
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -55,7 +55,7 @@ public class Pedido {
     }
 
     public LocalDateTime getDataPedido() {
-        return dataPedido;
+        return this.dataPedido;
     }
 
     public void setDataPedido(LocalDateTime dataPedido) {
@@ -63,7 +63,7 @@ public class Pedido {
     }
 
     public BigDecimal getValorTotal() {
-        return valorTotal;
+        return this.valorTotal;
     }
 
     public void setValorTotal(BigDecimal valorTotal) {
@@ -71,7 +71,7 @@ public class Pedido {
     }
 
     public BigDecimal getValorFrete() {
-        return valorFrete;
+        return this.valorFrete;
     }
 
     public void setValorFrete(BigDecimal valorFrete) {
@@ -79,7 +79,7 @@ public class Pedido {
     }
 
     public StatusPedido getStatus() {
-        return status;
+        return this.status;
     }
 
     public void setStatus(StatusPedido status) {
@@ -87,7 +87,7 @@ public class Pedido {
     }
 
     public ArrayList<ItemPedido> getItemPedidoList() {
-        return itemPedidoList;
+        return this.itemPedidoList;
     }
 
     public void setItemPedidoList(ArrayList<ItemPedido> itemPedidoList) {
@@ -95,7 +95,7 @@ public class Pedido {
     }
 
     public EnderecoPedido getEnderecoEntrega() {
-        return enderecoEntrega;
+        return this.enderecoEntrega;
     }
 
     public void setEnderecoEntrega(EnderecoPedido enderecoEntrega) {

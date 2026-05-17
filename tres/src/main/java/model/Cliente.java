@@ -65,29 +65,29 @@ public class Cliente {
     /*getters*/
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public String getNomeCompleto() {
-        return nomeCompleto;
+        return this.nomeCompleto;
     }
 
     public String getCpf() {
-        return cpf;
+        return this.cpf;
     }
 
     public String getTelefone() {
-        return telefone;
+        return this.telefone;
     }
 
     public Cadastro getCadastro() {
-        return cadastro;
+        return this.cadastro;
     }
 
 
 
     public ArrayList<Pedido> getPedidoList() {
-        return pedidoList;
+        return this.pedidoList;
     }
 
         

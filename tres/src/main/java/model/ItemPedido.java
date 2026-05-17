@@ -20,7 +20,7 @@ public class ItemPedido {
 
     /* getters e setters */
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -28,7 +28,7 @@ public class ItemPedido {
     }
 
     public Sku getSku() {
-        return sku;
+        return this.sku;
     }
 
     public void setSku(Sku sku) {
@@ -36,7 +36,7 @@ public class ItemPedido {
     }
 
     public int getQuantidade() {
-        return quantidade;
+        return this.quantidade;
     }
 
     public void setQuantidade(int quantidade) {
@@ -44,7 +44,7 @@ public class ItemPedido {
     }
 
     public BigDecimal getPrecoUnitario() {
-        return precoUnitario;
+        return this.precoUnitario;
     }
 
     public void setPrecoUnitario(double precoUnitario) {
