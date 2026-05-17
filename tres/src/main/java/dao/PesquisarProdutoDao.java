@@ -100,7 +100,7 @@ public class PesquisarProdutoDao {
   
   public boolean buscarPorNomeECategoria(String nome, int idCategoria, List<Produto> resultado) {
     String sql = "SELECT p.* FROM produto p " +
-                 "INNER JOIN tem_categoriac ON p.id_prod = id_produto " +
+                 "INNER JOIN tem_categoria ON p.id_prod = id_produto " +
                  "WHERE id_categoria = ? AND p.nome_prod LIKE ?";
 
     Connection con = null;
