@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Categoria {
     private int id;
+    private int idPai; /* Para saber de quem é filho*/
     private String nome;
     private String slug;
     private boolean ativo;
@@ -51,7 +52,16 @@ public class Categoria {
 
     public void setId(int id) {
         this.id = id;
+    }    
+
+    /* Adicionei esses dois métodos.*/
+    public int getPai() {
+        return idPai;
     }
+    public void setPai(int entrada) {
+        this.idPai = entrada;
+    }
+    /*=============================*/
 
     public String getNome() {
         return nome;
