@@ -7,17 +7,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import dao.con.AcessoPSQL;
-import model.Categoria;
+import model.Produto;
+
 /*
  * Não sei se deveria ser o model ou ctl aqui...
  * Optei pelo model por ora.
  */
 
-public class CategoriaDao {
+public class ProdutoDao {
 
-  public boolean inserir(Categoria categoria) {
-    String sql = "INSERT INTO categoria(nome_cat, slug, ativo, id_pai) " +
-                " VALUES (?,?,?,?)";
+  public boolean inserir(Produto produto) {
+    String sql = "INSERT INTO produto(nome_prod, descricao, material, marca, ativo, pwd_img) " +
+                " VALUES (?,?,?,?,?,?)";
     Connection con = null;
     PreparedStatement cmd = null;
 
@@ -29,10 +30,12 @@ public class CategoriaDao {
       con.setAutoCommit(false);
 
       cmd = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-      cmd.setString(1, categoria.getNome());
-      cmd.setString(2, categoria.getSlug());
-      cmd.setBoolean(3, categoria.isAtivo());
-      cmd.setInt(4, categoria.getPai()); // Isso daqui vai dar ruim ainda! 17/05/MMXXVI
+      cmd.setString(1, produto.getNome());
+      cmd.setString(2, produto.getDescricao());
+      cmd.setString(3, produto.getMaterial());
+      cmd.setString(4, produto.getMarca());
+      cmd.setBoolean(5, produto.isAtivo());
+      cmd.setString(6, produto.getImagemPrincipalUrl());
 
       if (cmd.executeUpdate() == 1) {
         con.commit();
@@ -49,9 +52,9 @@ public class CategoriaDao {
     }
   }
 
-  public boolean remover(Categoria categoria) { // Remover por ID
-    String sql = "DELETE FROM categoria " +
-                " WHERE (id_cat = ?)";
+  public boolean remover(Produto produto) { // Remover por ID
+    String sql = "DELETE FROM produto " +
+                " WHERE (id_prod = ?)";
     Connection con = null;
     PreparedStatement cmd = null;
 
@@ -63,7 +66,7 @@ public class CategoriaDao {
       con.setAutoCommit(false);
 
       cmd = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-      cmd.setInt(1, categoria.getId());
+      cmd.setInt(1, produto.getId());
       /*
        * Talvez fazer um switch aqui:
        * (1) -- por id
@@ -88,30 +91,30 @@ public class CategoriaDao {
     }
   }
   
-  public boolean atualizar(Categoria categoria, int coluna) {
-    String sql = "UPDATE categoria";
-    /* Talvez por um 
-     * while(coluna != 0)
-     * ...
-     * switch(coluna % 4)
-     * ...
-     * coluna coluna = coluna / 4;
-     */
+  public boolean atualizar(Produto produto, int coluna) {
+    String sql = "UPDATE produto";
+
     switch (coluna) {
       case 1:
-        sql = sql + " SET slug = ?";
+        sql = sql + " SET descricao = ?";
         break;
       case 2:
-        sql = sql + " SET ativo = ?";
+        sql = sql + " SET material = ?";
         break;
       case 3:
-        sql = sql + " SET id_pai = ?";
+        sql = sql + " SET marca = ?";
+        break;
+      case 4:
+        sql = sql + " SET ativo = ?";
+        break;
+      case 5:
+        sql = sql + " SET pwd_img = ?";
         break;
       default:
-        sql = sql + " SET nome_cat = ?";
+        sql = sql + " SET nome_prod = ?";
         break;
     }
-    sql = sql + " WHERE (id_cat = ?)";
+    sql = sql + " WHERE (id_prod = ?)";
 
     Connection con = null;
     PreparedStatement cmd = null;
@@ -125,22 +128,27 @@ public class CategoriaDao {
 
       cmd = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);    
 
-      // Veja nota acima!
       switch (coluna) {
       case 1:
-        cmd.setString(1, categoria.getSlug());
+        cmd.setString(1, produto.getDescricao());
         break;
       case 2:
-        cmd.setBoolean(1, categoria.isAtivo());
+        cmd.setString(1, produto.getMaterial());
         break;
       case 3:
-        cmd.setInt(1, categoria.getPai());
+        cmd.setString(1, produto.getMarca());
+        break;
+      case 4:
+        cmd.setBoolean(1, produto.isAtivo());
+        break;
+      case 5:
+        cmd.setString(1, produto.getImagemPrincipalUrl());
         break;
       default:
-        cmd.setString(1, categoria.getNome());
+        cmd.setString(1, produto.getNome());
         break;
       }
-      cmd.setInt(2, categoria.getId());
+      cmd.setInt(2, produto.getId());
 
       if (cmd.executeUpdate() == 1) {
         con.commit();
@@ -157,14 +165,12 @@ public class CategoriaDao {
     }
   }
 
-  public boolean retornar(Categoria categoria, int id) {
+  public boolean retornar(Produto produto, int id) {
     /*
      *  Pensei em isso funcionar como um ponteiro...
-     *  Então o ctl Cat. tem os p* de modelo Cat.
-     *  Ela manda o id e o p* de alocamento e pronto!
      */ 
-    String sql = "SELECT * FROM categoria " +
-                " WHERE (id_cat = ?)";
+    String sql = "SELECT * FROM produto " +
+                " WHERE (id_prod = ?);";
     Connection con = null;
     PreparedStatement cmd = null;
     ResultSet saida = null;
@@ -183,11 +189,13 @@ public class CategoriaDao {
 
       if (saida.next()) {
         /*obs. next() retornar true ou false dependendo se há próxima linha, bom saber...*/
-        categoria.setId(saida.getInt("id_cat"));
-        categoria.setNome(saida.getString("nome_cat"));
-        categoria.setSlug(saida.getString("slug"));
-        categoria.setAtivo(saida.getBoolean("ativo"));
-        categoria.setPai(saida.getInt("id_pai"));
+        produto.setId(saida.getInt("id_prod"));
+        produto.setNome(saida.getString("nome_prod"));
+        produto.setDescricao(saida.getString("descricao"));
+        produto.setMaterial(saida.getString("material"));
+        produto.setMarca(saida.getString("marca"));
+        produto.setAtivo(saida.getBoolean("ativo"));
+        produto.setImagemPrincipalUrl(saida.getString("pwd_img"));
         return true;
       } else {
         return false;

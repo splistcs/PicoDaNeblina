@@ -121,5 +121,4 @@ public class Produto {
     public void setImagemPrincipalUrl(String imagemPrincipalUrl) {
         this.imagemPrincipalUrl = imagemPrincipalUrl;
     }
-    
 }
