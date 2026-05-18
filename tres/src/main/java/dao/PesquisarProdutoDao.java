@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.con.AcessoPSQL;
+import dao.dbcon.AcessoPSQL;
 import model.Produto;
 
 public class PesquisarProdutoDao {

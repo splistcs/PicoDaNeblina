@@ -1,4 +1,4 @@
-package dao.con;
+package dao.dbcon;
 
 /* 
  * Isso copiei e adaptei do exemplo de ling. prog. 1.
