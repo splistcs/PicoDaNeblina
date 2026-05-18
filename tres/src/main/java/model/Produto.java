@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import model.Sku;
 
 public class Produto {
     private int id;
@@ -12,6 +13,9 @@ public class Produto {
     private String marca;
     private boolean ativo;
     private String imagemPrincipalUrl;
+
+    /* Melhor ter um construtor vazio só para teste!*/
+    public Produto() { };
 
     public Produto(Sku sku){
         this.skuList = new ArrayList<>();
@@ -121,5 +125,4 @@ public class Produto {
     public void setImagemPrincipalUrl(String imagemPrincipalUrl) {
         this.imagemPrincipalUrl = imagemPrincipalUrl;
     }
-    
 }
