@@ -33,37 +33,20 @@ import model.Produto;
 public class ctlPesquisarProduto {
   private List<Produto> produtos = new ArrayList<>();
 
-  private void imprimirProduto() {
-    System.out.println("| id_prod | nome_prod | descricao | material | marca | ativo | pwd_img |");
-    for (Produto ref : this.produtos) {
-      System.out.printf("| %d | %s | %s | %s | %s | %b | %s |\n",
-        ref.getId(), ref.getNome(), ref.getDescricao(), ref.getMaterial(), ref.getMarca(), ref.isAtivo(), ref.getImagemPrincipalUrl());
-    }
+  public List<Produto> getListProduto() {
+    return this.produtos;
   }
 
   public boolean pesquisar (int idCategoria, String nome) throws SQLException {
-
     this.produtos.clear();
     PesquisarProdutoDao pesquisarProdutoDao = new PesquisarProdutoDao();
 
     if(nome != null && idCategoria > 0) {
-      if(pesquisarProdutoDao.buscarPorNomeECategoria(nome, idCategoria, this.produtos)) {
-        imprimirProduto();
-        return true;
-      }
-      return false;
+      return pesquisarProdutoDao.buscarPorNomeECategoria(nome, idCategoria, this.produtos);
     } else if (nome != null) {
-      if(pesquisarProdutoDao.buscarPorNome(nome, this.produtos)) {
-        imprimirProduto();
-        return true;
-      }
-      return false;
+      return pesquisarProdutoDao.buscarPorNome(nome, this.produtos);
     } else if (idCategoria > 0) {
-      if(pesquisarProdutoDao.buscarPorCategoria(idCategoria, this.produtos)) {
-        imprimirProduto();
-        return true;
-      }
-      return false;
+      return pesquisarProdutoDao.buscarPorCategoria(idCategoria, this.produtos);
     } else {
       return false;
     }
