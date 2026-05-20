@@ -21,7 +21,7 @@
  *    WHERE (id_cat = ?) AND (nome_prod LIKE %?%)
  *
  */
-package ctl;
+package ctrl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ import java.util.List;
 import dao.PesquisarProdutoDao;
 import model.Produto;
 
-public class ctlPesquisarProduto {
+public class PesquisarProdutoCtrl {
   private List<Produto> produtos = new ArrayList<>();
 
   public List<Produto> getListProduto() {

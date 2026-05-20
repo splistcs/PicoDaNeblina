@@ -9,8 +9,8 @@ import jakarta.annotation.PostConstruct;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 
-import ctl.ctlPesquisarProduto;
-import ctl.ctlCategoria;
+import ctrl.PesquisarProdutoCtrl;
+import ctrl.CategoriaCtrl;
 import model.Categoria;
 import model.Produto;
 
@@ -25,13 +25,13 @@ import model.Produto;
 @ViewScoped
 public class PesquisarProdutoBean implements Serializable {
 
-  private ctlPesquisarProduto ctlpp = new ctlPesquisarProduto();
-  private ctlCategoria ctlctg = new ctlCategoria();
-  private List<Produto> tmpListaProduto = new ArrayList<>();
-  private List<Categoria> tmpListaCategoria = new ArrayList<>();
+  private PesquisarProdutoCtrl pesquisarProdutoCtrl = new PesquisarProdutoCtrl();
+  private CategoriaCtrl categoriaCtrl = new CategoriaCtrl();
+  private List<Produto> produtosTmp = new ArrayList<>();
+  private List<Categoria> categoriasTmp = new ArrayList<>();
   /* Outra gambiarra... */
-  private int tmpIdCategoria = 0;
-  private String tmpTexto;    
+  private int IdCategoriaTmp = 0;
+  private String textoTmp;    
 
   /* Carregar as categorias se não ela aparece vazia...
    *
@@ -40,45 +40,45 @@ public class PesquisarProdutoBean implements Serializable {
   @PostConstruct
   public void prepararCategoria() {
     try {
-      if (ctlctg.buscarTodasCategoria()) {
-        this.tmpListaCategoria = ctlctg.getListCategoria();
+      if (CategoriaCtrl.buscarTodasCategoria()) {
+        this.categoriasTmp = CategoriaCtrl.getListCategoria();
       }
     } catch (SQLException DeuRuim) {
       System.out.println("Maldito BEAN" + DeuRuim.getMessage());
     }
   }
   
-  public List<Categoria> getTmpListaCategoria() {
-    return this.tmpListaCategoria;
+  public List<Categoria> getListCategoriaTmp() {
+    return this.categoriasTmp;
   }
  
-  public int getTmpIdCategoria() {
-    return this.tmpIdCategoria;
+  public int getIdCategoriaTmp() {
+    return this.IdCategoriaTmp;
   }
 
-  public void setTmpIdCategoria(int entrada) {
-    this.tmpIdCategoria = entrada;
+  public void setIdCategoriaTmp(int entrada) {
+    this.IdCategoriaTmp = entrada;
   }
  
-  public String getTmpTexto() {
-    return this.tmpTexto;
+  public String getTextoTmp() {
+    return this.textoTmp;
   }
 
-  public void setTmpTexto(String entrada) {
-    this.tmpTexto = entrada;
+  public void setTextoTmp(String entrada) {
+    this.textoTmp = entrada;
   }
  
   public void executarBusca() {
     try {
-      if (ctlpp.pesquisar(this.tmpIdCategoria, this.tmpTexto)) {
-        this.tmpListaProduto = ctlpp.getListProduto();
+      if (pesquisarProdutoCtrl.pesquisar(this.IdCategoriaTmp, this.textoTmp)) {
+        this.produtosTmp = pesquisarProdutoCtrl.getListProduto();
       }
-    } catch (SQLException e) {
-      System.out.println("Erro ao executar busca de produtos: " + e.getMessage());
+    } catch (SQLException DeuRuim) {
+      System.out.println("Erro ao executar busca de produtos: " + DeuRuim.getMessage());
     }
   }
 
-  public List<Produto> getTmpListaProduto() {
-    return this.tmpListaProduto;
+  public List<Produto> getListProdutoTmp() {
+    return this.produtosTmp;
   }
 }

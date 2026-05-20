@@ -1,4 +1,4 @@
-package ctl;
+package ctrl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.List;
 import dao.CategoriaDao;
 import model.Categoria;
 
-public class ctlCategoria {
+public class CategoriaCtrl {
   private List<Categoria> categorias = new ArrayList<>();
 
   public List<Categoria> getListCategoria() {

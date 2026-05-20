@@ -8,11 +8,9 @@ public class Categoria {
     private String nome;
     private String slug;
     private boolean ativo;
-    private ArrayList<Categoria> subcategoriaList;
     private boolean isRaiz;
 
-    public Categoria() {
-    }
+    public Categoria() { }
 
     public boolean isRaiz(){
         if (this.isRaiz){
@@ -21,7 +19,11 @@ public class Categoria {
         else return false;
     }
 
-    /* controle de subcategorias */
+    /* controle de subcategorias
+     * Não sei se vamos implementar, deixar comentado só...
+     */
+    /*
+    private ArrayList<Categoria> subcategoriaList;
     public void adicioarSubcategoria(Categoria categoria){
         this.subcategoriaList.add(categoria);
     }
@@ -35,6 +37,7 @@ public class Categoria {
             }
         });
     }
+    */
 
     /* getters e setters */
 
