@@ -8,17 +8,23 @@ VALUES  ('Masculino', 'masc', true, NULL),
 INSERT INTO produto (nome_prod, descricao, material, marca, ativo, pwd_img)
 VALUES  ('Camisa Polo', 'Polo confortavel para o dia a dia.', 'Algodao', 'Renner', true, 'teste1.jpg'),
         ('Calca Jeans', 'Calca jeans slim fit com elastano.', 'Jeans', 'Levis', true, 'teste1.jpg'),
-        ('Cueca Boxer', 'Cueca boxer sem costura super confortavel.', 'Microfibra', 'SiofStyle', true, 'teste1.jpg');
+        ('Cueca Boxer', 'Cueca boxer sem costura super confortavel.', 'Microfibra', 'SiofStyle', true, 'teste1.jpg'),
+        ('Camisa Pomba', 'Estampa de alta fidelidade.', 'Microfibra', 'CanvasMake', true, 'teste2.jpeg'),
+        ('Camisa Plant', 'Do famoso jogo.', 'Microfibra', 'CanvasMake', true, 'teste3.jpeg'),
+        ('Camisa Minion', 'De um filme.', 'Microfibra', 'CanvasMake', true, 'teste4.jpeg');
 
 INSERT INTO tem_categoria (id_produto, id_categoria)
 VALUES  (1, 1),
         (1, 3),
         (2, 2),
         (2, 5),
+        (4, 3),
+        (5, 3),
+        (6, 3),
         (3, 4);
 
 INSERT INTO cliente(nome_completo, email, telefone, cpf, senhaHash, ativo, tipoCadastro)
-VALUES ('Linguinus', 'ling@gmail.com', '1898', '192921', '1234', true, 2);
+VALUES ('Marcus', 'Marc@gmail.com', '1898', '192921', '1234', true, 2);
 
 SELECT * FROM categoria;
 SELECT nome_prod, nome_cat FROM
