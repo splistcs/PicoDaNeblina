@@ -1,70 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="jakarta.faces.html"
-      xmlns:f="jakarta.faces.core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="jakarta.faces.core">
 
 <h:head>
+  <f:metadata>
+    <f:viewAction action="pesquisarproduto?faces-redirect=true" />
+  </f:metadata>
   <title>Siof-TMB</title>
 </h:head>
 
 <h:body>
-  <h:form id="menuEntrada">
-    <div class="pesquisa">
-      <p:card>
-        <f:facet name="title">
-          Siof - TMB
-        </f:facet>
-        <p:panelGrid columns="3" styleClass="ui-panelgrid-blank ui-fluid" columnClasses="ui-g-2, ui-g-9, ui-g-1">
-          <h:panelGroup layout="block">
-            <p:selectOneMenu id="pesquisarCategoria" 
-                             value="#{PesquisarProdutoBean.tmpIdCategoria}" 
-                             placeholder="Categoria">
-              <f:selectItem itemLabel="Categoria" itemValue="#{0}" noSelectionOption="true" />
-              <f:selectItems value="#{PesquisarProdutoBean.tmpListaCategoria}" 
-                             var="categoria" 
-                             itemLabel="#{categoria.nome}" 
-                             itemValue="#{categoria.id}" />
-            </p:selectOneMenu>
-          </h:panelGroup>
-                    
-          <h:panelGroup layout="block">
-            <p:inputText id="pesquisarNome" 
-                         value="#{PesquisarProdutoBean.tmpTexto}" 
-                         placeholder="..." />
-          </h:panelGroup>
-
-          <h:panelGroup layout="block">
-            <p:commandButton action="#{PesquisarProdutoBean.executarBusca}" 
-                             update="tabelaResultados" 
-                             icon="pi pi-search" 
-                             title="Buscar" />
-          </h:panelGroup>
-        </p:panelGrid>
-      </p:card>           
-
-      <p:dataTable id="tabelaResultados" 
-                   var="produto" 
-                   value="#{PesquisarProdutoBean.tmpListaProduto}"
-                   emptyMessage=" "
-                   rows="10"
-                   paginator="true"
-                   paginatorPosition="bottom">
-
-        <p:column headerText="Img">
-          <h:outputText value="#{produto.imagemPrincipalUrl}" />
-        </p:column>
-        
-        <p:column headerText="Nome">
-          <h:outputText value="#{produto.nome}" />
-        </p:column>
-        
-        <p:column headerText="Marca">
-          <h:outputText value="#{produto.marca}" />
-        </p:column>
-      </p:dataTable>
-    </div>
-  </h:form>
+    <h:outputText value="carregando..." />
 </h:body>
-
 </html>

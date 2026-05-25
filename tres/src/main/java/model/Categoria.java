@@ -90,13 +90,13 @@ public class Categoria {
         this.ativo = ativo;
     }
 
-    public ArrayList<Categoria> getSubcategoriaList() {
-        return subcategoriaList;
-    }
-
-    public void setSubcategoriaList(ArrayList<Categoria> subcategoriaList) {
-        this.subcategoriaList = subcategoriaList;
-    }
+    // public ArrayList<Categoria> getSubcategoriaList() {
+    //     return subcategoriaList;
+    // }
+    //
+    // public void setSubcategoriaList(ArrayList<Categoria> subcategoriaList) {
+    //     this.subcategoriaList = subcategoriaList;
+    // }
 
     public void setRaiz(boolean isRaiz) {
         this.isRaiz = isRaiz;

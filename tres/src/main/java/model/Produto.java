@@ -16,7 +16,7 @@ public class Produto {
     private ArrayList<Categoria> categoriaList;
 
     /* Melhor ter um construtor vazio só para teste!*/
-    public Produto() { };
+    public Produto() { }
 
     public Produto(Sku sku){
         this.skuList = new ArrayList<>();
