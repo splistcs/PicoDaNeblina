@@ -57,8 +57,8 @@ public class SkuDao {
     Sku aux = new Sku();
     aux.setId(saida.getInt("id_prod"));
     aux.setEstoque(saida.getInt("estoque"));
-    aux.setPreco(saida.getDouble("preco"));
-    aux.setPeso(saida.getInt("peso"));
+    aux.setPreco(java.math.BigDecimal.valueOf(saida.getDouble("preco")));
+    aux.setPesoGramas((saida.getInt("peso")));
     aux.setCodigoUniversal(saida.getString("cod_uni"));
     aux.setAlturaCm(saida.getInt("alt_cm"));
     aux.setComprimentoCm(saida.getInt("compr_cm"));
@@ -112,7 +112,7 @@ public class SkuDao {
 
       while(saida.next()) {
         Sku skuAux = formatarSku(saida);
-        if(retornarEspecificacaoPorSkuId(skuAux)) {
+        if(retornarEspecificacaoPorSkuId(con, skuAux)) {
           skulist.add(skuAux);
         }
       }

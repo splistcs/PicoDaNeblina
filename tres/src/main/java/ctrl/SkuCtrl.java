@@ -9,7 +9,7 @@ import model.Sku;
 import model.Produto;
 
 public class SkuCtrl {
-  private List<Sku> skus = new ArrayList<>();
+  private ArrayList<Sku> skus = new ArrayList<>();
 
   public List<Sku> getListSku() {
     return this.skus;

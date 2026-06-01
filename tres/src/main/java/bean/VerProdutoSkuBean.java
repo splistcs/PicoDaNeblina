@@ -21,7 +21,7 @@ import model.Produto;
 @ViewScoped
 public class VerProdutoSkuBean implements Serializable {
 
-  private SkuCtrl SkuCtrl = new SkuCtrl();
+  private SkuCtrl skuCtrl = new SkuCtrl();
   private List<Sku> skusTmp = new ArrayList<>();
   private Produto produto = new Produto();
 
