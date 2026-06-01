@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import model.Cadastro;
 
 public class Cliente {
     private int id;

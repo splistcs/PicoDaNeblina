@@ -11,6 +11,9 @@ public class CarrinhoDeCompras {
     private String cepDestino;
     private ArrayList<ItemCarrinho> itemCarrinhoList;
     
+    
+    public CarrinhoDeCompras() {
+    }
     public CarrinhoDeCompras(int idSessao, ItemCarrinho itemCarrinho){
         this.idSessao = idSessao;
         this.dataCriacao = LocalDateTime.now();

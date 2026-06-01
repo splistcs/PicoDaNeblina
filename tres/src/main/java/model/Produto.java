@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import model.Sku;
 
 public class Produto {
     private int id;

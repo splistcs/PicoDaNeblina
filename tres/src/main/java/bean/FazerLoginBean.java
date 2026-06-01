@@ -1,8 +1,6 @@
 package bean;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.io.Serializable;
 
 import jakarta.enterprise.context.SessionScoped;
@@ -11,8 +9,6 @@ import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 
 import ctrl.ClienteCtrl;
-import model.Cliente;
-import model.Cadastro;
 import model.Enums.TipoCadastro;
 
 @Named("FazerLoginBean")
