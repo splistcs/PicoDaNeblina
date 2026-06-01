@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+  <title>Siof-TMB</title>
+  <h:outputStylesheet library="webjars" name="primeflex/3.3.1/primeflex.min.css" />
+</h:head>
+
+<h:body>
+  <h:form id="menuEntrada">
+    <div class="pesquisa">
+      <p:card>
+        <p:panelGrid columns="3" styleClass="ui-panelgrid-blank ui-fluid" columnClasses="ui-g-8, ui-g-2, ui-g-2">
+          <h:panelGroup layout="block">
+            <h:outputText value="Siof - TMB" style="font-size: 1.5rem; font-weight: bold;" />
+         </h:panelGroup>
+                    
+          <h:panelGroup layout="block">
+           <p:commandButton action="usuario/carrinho?faces-redirect=true"
+                            value="Carrinho"
+                            icon="pi pi-shopping-cart"
+                            styleClass="ui-button-raised ui-button-rounded"/>
+          </h:panelGroup>
+
+          <h:panelGroup layout="block">
+           <p:commandButton action="cadastro/FazerLogin?faces-redirect=true"
+                            value="#{empty FazerLoginBean.nomeTmp ? 'Fazer Login' : FazerLoginBean.nomeTmp}"
+                            icon="pi pi-user"
+                            styleClass="ui-button-outlined ui-button-rounded"/>
+          </h:panelGroup>
+        </p:panelGrid>
+
+       <p:panelGrid columns="3" styleClass="ui-panelgrid-blank ui-fluid" columnClasses="ui-g-2, ui-g-9, ui-g-1">
+          <h:panelGroup layout="block">
+            <p:selectOneMenu id="pesquisarCategoria" 
+                             value="#{PesquisarProdutoBean.idCategoriaTmp}" 
+                             placeholder="Categoria">
+              <f:selectItem itemLabel="Categoria" itemValue="#{0}" noSelectionOption="true" />
+              <f:selectItems value="#{PesquisarProdutoBean.listCategoriaTmp}" 
+                             var="categoria" 
+                             itemLabel="#{categoria.nome}" 
+                             itemValue="#{categoria.id}" />
+            </p:selectOneMenu>
+          </h:panelGroup>
+                    
+          <h:panelGroup layout="block">
+            <p:inputText id="pesquisarNome" 
+                         value="#{PesquisarProdutoBean.textoTmp}" 
+                         placeholder="..." />
+          </h:panelGroup>
+
+          <h:panelGroup layout="block">
+            <p:commandButton action="#{PesquisarProdutoBean.executarBusca}" 
+                             update=":form:Resultados" 
+                             icon="pi pi-search" 
+                             title="Buscar" />
+          </h:panelGroup>
+        </p:panelGrid>
+      </p:card>
+    </div>
+  </h:form>
+
+  <div class="product card">
+    <h:form id="form">
+      <p:dataView id="Resultados"
+                  var="produto" 
+                  value="#{PesquisarProdutoBean.listProdutoTmp}"
+                  emptyMessage=""
+                  rows="12" 
+                  paginator="true"
+                  paginatorPosition="bottom"
+                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                  gridIcon="pi pi-th-large"
+                  layout="grid" 
+                  gridRowStyleClass="lg:col-6 xl:col-4" 
+                  flex="true">
+        <p:dataViewGridItem>
+          <div class="product-grid-item card border-1 surface-border p-3 shadow-1 border-round m-2 flex flex-column">
+            <div class="flex align-items-center justify-content-between mb-3">
+              <div class="flex align-items-center">
+                <i class="pi pi-tag product-category-icon"/>
+                <span class="product-category">#{produto.marca}</span>
+              </div>
+              <p:tag severity="#{produto.ativo ? 'success' : 'danger'}" 
+                     value="#{produto.ativo ? 'Com estoque' : 'Esgotado'}" 
+                     rounded="true" />
+            </div>
+            <div class="text-center py-3">
+              <p:graphicImage name="#{produto.imagemPrincipalUrl}"
+                              library="img"
+                              style="width: 100%; max-width: 150px; height: auto; display: block; margin: 0 auto;"/>
+              <div class="product-name">#{produto.nome}</div>
+              <div class="product-description">#{produto.descricao}</div>
+            </div>
+            <div class="flex align-items-center justify-content-center mt-auto">
+              <p:commandButton type="button"
+                               value="Ver mais"
+                               icon="pi pi-plus"
+                               disabled="#{!produto.ativo}">
+              </p:commandButton>
+            </div>
+          </div>
+        </p:dataViewGridItem>
+      </p:dataView>
+    </h:form>
+  </div>
+</h:body>
+
+</html>

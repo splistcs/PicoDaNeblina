@@ -7,15 +7,16 @@ public class Produto {
     private int id;
     private String nome;
     private String descricao;
-    private ArrayList<Sku> skuList;
-    private ArrayList<Categoria> categoriaList;
     private String material;
     private String marca;
     private boolean ativo;
     private String imagemPrincipalUrl;
 
+    private ArrayList<Sku> skuList;
+    private ArrayList<Categoria> categoriaList;
+
     /* Melhor ter um construtor vazio só para teste!*/
-    public Produto() { };
+    public Produto() { }
 
     public Produto(Sku sku){
         this.skuList = new ArrayList<>();

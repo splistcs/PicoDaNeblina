@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.dbcon.AcessoPSQL;
 import model.Categoria;
@@ -12,7 +14,6 @@ import model.Categoria;
  * Não sei se deveria ser o model ou ctl aqui...
  * Optei pelo model por ora.
  */
-
 public class CategoriaDao {
 
   public boolean inserir(Categoria categoria) {
@@ -72,7 +73,6 @@ public class CategoriaDao {
        *
        * ou transformar em uma função...
        */
-
       if (cmd.executeUpdate() == 1) {
         con.commit();
         return true;
@@ -192,6 +192,48 @@ public class CategoriaDao {
       } else {
         return false;
       }
+    } catch (SQLException deuRuim) {
+      System.out.println("ERRO" + deuRuim.getMessage());
+      return false;
+    } finally {
+      AcessoPSQL.desconectar(con);
+    }
+  }
+
+  public boolean retornarTudo(List<Categoria> categorias) {
+
+    String sql = "SELECT * FROM categoria ";
+    Connection con = null;
+    PreparedStatement cmd = null;
+    ResultSet saida = null;
+
+    try {
+      con = AcessoPSQL.conectar();
+      if (con == null) {
+        return false;
+      }
+      con.setAutoCommit(false);
+
+      cmd = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+      saida = cmd.executeQuery();
+
+      /* Coisa muito feia!
+       * Céus, que gambiarra...
+       * LEMBRETE: MUDAR NA VERSÃO FINAL!
+       */
+      while (saida.next()) {
+        Categoria categoria = new Categoria();
+        categoria.setId(saida.getInt("id_cat"));
+        categoria.setNome(saida.getString("nome_cat"));
+        categoria.setSlug(saida.getString("slug"));
+        categoria.setAtivo(saida.getBoolean("ativo"));
+        categoria.setPai(saida.getInt("id_pai"));
+        categorias.add(categoria);
+      }
+      
+      return !(categorias.isEmpty());
+
     } catch (SQLException deuRuim) {
       System.out.println("ERRO" + deuRuim.getMessage());
       return false;

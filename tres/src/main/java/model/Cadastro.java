@@ -9,6 +9,8 @@ public class Cadastro {
     private String senhaHash;
     private TipoCadastro papel;
 
+    public Cadastro() { }
+
     public Cadastro(long id, String email, String senhaHash, TipoCadastro papel) {
         this.id = id;
         this.email = email;
@@ -56,7 +58,4 @@ public class Cadastro {
     public void setPapel(TipoCadastro papel) {
         this.papel = papel;
     }
-
-    
-    
 }
