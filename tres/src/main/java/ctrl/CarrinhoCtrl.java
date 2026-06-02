@@ -3,6 +3,7 @@ package ctrl;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import model.CarrinhoDeCompras;
 import model.ItemCarrinho;
 import model.Sku;
 
@@ -27,6 +28,10 @@ public class CarrinhoCtrl {
         itemCarrinho.calcularValorTotal();
     }
 
+    public ArrayList<ItemCarrinho> getItemCarrinhoList(CarrinhoDeCompras carrinho) {
+        return carrinho.getItemCarrinhoList();
+    }
+
     public BigDecimal calcularValorTotal(ArrayList<ItemCarrinho> itemCarrinhoList) {
         BigDecimal valorTotal = BigDecimal.ZERO;
         for (ItemCarrinho item : itemCarrinhoList) {
@@ -34,4 +39,9 @@ public class CarrinhoCtrl {
         }
         return valorTotal;
     }
+
+    public BigDecimal calcularValorTotal(CarrinhoDeCompras carrinho) {
+        return calcularValorTotal(carrinho.getItemCarrinhoList());
+    }
+    
 }
