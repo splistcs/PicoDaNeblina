@@ -49,8 +49,8 @@ public class FazerLoginBean implements Serializable {
          */
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Ops...", "Tente outra vez"));
       }
-    } catch (SQLException DeuRuim) {
-      System.out.println("ERRO: Login" + DeuRuim.getMessage());
+    } catch (SQLException exception) {
+      System.out.println("ERRO: Login" + exception.getMessage());
     }
 
     return null;

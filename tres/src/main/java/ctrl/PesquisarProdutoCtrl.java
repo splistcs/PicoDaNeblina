@@ -27,7 +27,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.PesquisarProdutoDao;
+import dao.ProdutoDao;
 import model.Produto;
 
 public class PesquisarProdutoCtrl {
@@ -39,14 +39,14 @@ public class PesquisarProdutoCtrl {
 
   public boolean pesquisar (int idCategoria, String nome) throws SQLException {
     this.produtos.clear();
-    PesquisarProdutoDao pesquisarProdutoDao = new PesquisarProdutoDao();
+    ProdutoDao produtoDao = new ProdutoDao();
 
     if(nome != null && idCategoria > 0) {
-      return pesquisarProdutoDao.buscarPorNomeECategoria(nome, idCategoria, this.produtos);
+      return produtoDao.buscarPorNomeECategoria(nome, idCategoria, this.produtos);
     } else if (nome != null) {
-      return pesquisarProdutoDao.buscarPorNome(nome, this.produtos);
+      return produtoDao.buscarPorNome(nome, this.produtos);
     } else if (idCategoria > 0) {
-      return pesquisarProdutoDao.buscarPorCategoria(idCategoria, this.produtos);
+      return produtoDao.buscarPorCategoria(idCategoria, this.produtos);
     } else {
       return false;
     }

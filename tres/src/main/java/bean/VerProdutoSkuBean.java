@@ -28,8 +28,8 @@ public class VerProdutoSkuBean implements Serializable {
       if (skuCtrl.pesquisarPorProduto(produto)) {
         this.skusTmp = skuCtrl.getListSku();
       }
-    } catch (SQLException DeuRuim) {
-      System.out.println("Maldito BEAN" + DeuRuim.getMessage());
+    } catch (SQLException exception) {
+      System.out.println("Maldito BEAN" + exception.getMessage());
     }
   }
   
