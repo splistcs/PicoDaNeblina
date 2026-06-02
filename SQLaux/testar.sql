@@ -13,6 +13,39 @@ VALUES  ('Camisa Polo', 'Polo confortavel para o dia a dia.', 'Algodao', 'Renner
         ('Camisa Plant', 'Do famoso jogo.', 'Microfibra', 'CanvasMake', true, 'teste3.jpeg'),
         ('Camisa Minion', 'De um filme.', 'Microfibra', 'CanvasMake', true, 'teste4.jpeg');
 
+INSERT INTO sku (id_prod, estoque, preco, peso, cod_uni, alt_cm, larg_cm, compr_cm)
+VALUES (4, 10, 11.0, 3, 'cod_100', 10, 10, 10),
+       (4, 10, 10.0, 3, 'cod_101', 10, 10, 10),
+       (4, 10, 17.0, 3, 'cod_102', 10, 10, 10),
+       (5, 10, 21.0, 3, 'cod_200', 10, 10, 10),
+       (5, 10, 30.0, 3, 'cod_201', 10, 10, 10),
+       (5, 10, 47.0, 3, 'cod_202', 10, 10, 10),
+       (6, 10, 81.0, 3, 'cod_300', 10, 10, 10),
+       (6, 10, 50.0, 3, 'cod_301', 10, 10, 10),
+       (6, 10, 97.0, 3, 'cod_302', 10, 10, 10);
+
+
+
+INSERT INTO especificacao (id_hp, var, valor)
+VALUES (1, 'TAMANHO', 'P'),
+       (1, 'COR', 'BRANCO'),
+       (2, 'TAMANHO', 'M'),
+       (2, 'COR', 'BRANCO'),
+       (3, 'TAMANHO', 'G'),
+       (3, 'COR', 'BRANCO'),
+       (4, 'TAMANHO', 'P'),
+       (4, 'COR', 'PRETO'),
+       (5, 'TAMANHO', 'M'),
+       (5, 'COR', 'PRETO'),       
+       (6, 'TAMANHO', 'G'),
+       (6, 'COR', 'PRETO'),
+       (7, 'TAMANHO', 'P'),
+       (7, 'COR', 'PRETO'),
+       (8, 'TAMANHO', 'M'),
+       (8, 'COR', 'PRETO'),       
+       (9, 'TAMANHO', 'G'),
+       (9, 'COR', 'PRETO');
+
 INSERT INTO tem_categoria (id_produto, id_categoria)
 VALUES  (1, 1),
         (1, 3),
