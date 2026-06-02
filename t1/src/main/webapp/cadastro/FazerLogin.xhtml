@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+  <title>Siof-TMB</title>
+</h:head>
+
+<h:body>
+  
+  <div class="fazerlogin" style="justify-content: center; align-items: center;">
+
+    <h:form id="menuLogin">
+      <p:growl id="messages" showDetail="true" keepAlive="false" life="4000" />
+      <p:card>
+        <f:facet name="title">
+          <span>Fazer Login</span>
+        </f:facet>
+
+        <div class="ui-fluid">
+          <div class="field mb-4">
+            <p:outputLabel for="usuario" value="E-mail"/>
+            <p:inputText id="usuario" 
+                         value="#{FazerLoginBean.emailTmp}" 
+                         required="true" 
+                         requiredMessage="EMAIL ERRO"
+                         placeholder="Digite email" />
+          </div>
+          
+          <div class="field">
+            <p:outputLabel for="senha" value="Senha"/>
+            <p:password id="senha" 
+                        value="#{FazerLoginBean.senhaTmp}" 
+                        required="true" 
+                        requiredMessage="SENHA ERRO"
+                        placeholder="Digite senha"
+                        toggleMask="true" 
+                        feedback="false" />
+          </div>
+        </div>
+        
+        <f:facet name="footer">
+        <p:commandButton action="#{FazerLoginBean.executarLogin}" 
+                         value="Logar?" 
+                         update="messages"
+                         icon="pi pi-sign-in" 
+                         styleClass="ui-button-raised ui-button-rounded" />
+                           
+          <div style="text-align: center; margin-top: 1rem;">
+            <p:link value="Voltar" outcome="/pesquisarproduto"/>
+          </div>
+        </f:facet>
+      </p:card>
+    </h:form>
+  </div>
+
+</h:body>
+
+</html>
