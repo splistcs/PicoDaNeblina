@@ -73,8 +73,8 @@ public class PesquisarProdutoBean implements Serializable {
       if (pesquisarProdutoCtrl.pesquisar(this.IdCategoriaTmp, this.textoTmp)) {
         this.produtosTmp = pesquisarProdutoCtrl.getListProduto();
       }
-    } catch (SQLException DeuRuim) {
-      System.out.println("Erro ao executar busca de produtos: " + DeuRuim.getMessage());
+    } catch (SQLException exception) {
+      System.out.println("Erro ao executar busca de produtos: " + exception.getMessage());
     }
   }
 
