@@ -1,88 +1,81 @@
 package bean;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import dao.CarrinhoDao;
+import ctrl.CarrinhoCtrl;
+import jakarta.annotation.PostConstruct;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import model.CarrinhoDeCompras;
-import model.Cliente;
 import model.ItemCarrinho;
 
 @Named("CarrinhoBean")
 @ViewScoped
-public class CarrinhoBean {
-    private int idSessao;
+public class CarrinhoBean implements Serializable{
+    private int idSessao; // id cliente deve existir previamente!!!!! Passar de lugar !!!!!!!!!
     private LocalDateTime dataCriacao;
     private BigDecimal valorTotal;
     private String cepDestino;
     private ArrayList<ItemCarrinho> itemCarrinhoList;
-    
-    
-    public CarrinhoBean(){
+
+    CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
+    private CarrinhoCtrl carrinhoCtrl = new CarrinhoCtrl();
+
+    @PostConstruct
+    public void prepararCarrinho() {
+        CarrinhoBean carrinhoBean = carrinhoCtrl.getCarrinhoBean(this.idSessao);
+        this.idSessao = carrinhoBean.getIdSessao();
+        this.dataCriacao = carrinhoBean.getDataCriacao();
+        this.valorTotal = carrinhoBean.getValorTotal();
+        this.cepDestino = carrinhoBean.getCepDestino();
+        this.itemCarrinhoList = carrinhoBean.getItemCarrinhoList();
     }
 
-    public CarrinhoBean(Cliente cliente){
-        CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
-        CarrinhoDao carrinhoDao = new CarrinhoDao();
-
-        carrinhoDao.retornar(cliente.getId(), carrinho);
-            this.idSessao = carrinho.getIdSessao();
-            this.dataCriacao = carrinho.getDataCriacao();
-            this.valorTotal = carrinho.getValorTotal();
-            this.cepDestino = carrinho.getCepDestino();
-            this.itemCarrinhoList = carrinho.getItemCarrinhoList();
+    public void refresh(){
+        this.itemCarrinhoList = carrinhoCtrl.getItemCarrinhoList(carrinho);
     }
 
-    public void inserir(Cliente cliente){
-        CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
-        carrinho.setIdSessao(this.idSessao);
-        carrinho.setDataCriacao(this.dataCriacao);
-        carrinho.setValorTotal(this.valorTotal);
-        carrinho.setCepDestino(this.cepDestino);
-        carrinho.setItemCarrinhoList(this.itemCarrinhoList);
-
-        CarrinhoDao carrinhoDao = new CarrinhoDao();
-        carrinhoDao.inserir(cliente.getId(), carrinho);
+    public int getIdSessao() {
+        return idSessao;
+    }
+    public void setIdSessao(int idSessao) {
+        this.idSessao = idSessao;
+    }
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+    public String getCepDestino() {
+        return cepDestino;
+    }
+    public void setCepDestino(String cepDestino) {
+        this.cepDestino = cepDestino;
     }
 
-    public void inserir(int idCliente){
-        CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
-        carrinho.setIdSessao(this.idSessao);
-        carrinho.setDataCriacao(this.dataCriacao);
-        carrinho.setValorTotal(this.valorTotal);
-        carrinho.setCepDestino(this.cepDestino);
-        carrinho.setItemCarrinhoList(this.itemCarrinhoList);
-
-        CarrinhoDao carrinhoDao = new CarrinhoDao();
-        carrinhoDao.inserir(idCliente, carrinho);
+    public ArrayList<ItemCarrinho> getItemCarrinhoList() {
+        return itemCarrinhoList;
+    }
+    public void setItemCarrinhoList(ArrayList<ItemCarrinho> itemCarrinhoList) {
+        this.itemCarrinhoList = itemCarrinhoList;
     }
 
-    public void deletar(int idCliente){
-        CarrinhoDao carrinhoDao = new CarrinhoDao();
-        carrinhoDao.deletar(idCliente);
+    public void addItemCarrinho(ItemCarrinho itemCarrinho) {
+        this.itemCarrinhoList.add(itemCarrinho);
     }
-
-    public void limparCarrinho(){
-        this.itemCarrinhoList.clear();
-    }
-
-    public void calcularTotal(){
-        this.valorTotal = BigDecimal.ZERO;
-        this.itemCarrinhoList.forEach(itemCarrinho -> {
-        this.valorTotal = this.valorTotal.add(itemCarrinho.getSubtotal());
-        });
-    }
-
-    public void removerItem(ItemCarrinho itemCarrinho){
+    public void removeItemCarrinho(ItemCarrinho itemCarrinho) {
         this.itemCarrinhoList.remove(itemCarrinho);
-        this.valorTotal = BigDecimal.ZERO;
-        this.itemCarrinhoList.forEach(item -> {
-            this.valorTotal = this.valorTotal.add(item.getSubtotal());
-        } 
-    }       
+    }
 
 
 }
