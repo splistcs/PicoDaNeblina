@@ -43,8 +43,8 @@ public class PesquisarProdutoBean implements Serializable {
       if (categoriaCtrl.buscarTodasCategoria()) {
         this.categoriasTmp = categoriaCtrl.getListCategoria();
       }
-    } catch (SQLException DeuRuim) {
-      System.out.println("Maldito BEAN" + DeuRuim.getMessage());
+    } catch (SQLException exception) {
+      System.out.println("Maldito BEAN" + exception.getMessage());
     }
   }
   
